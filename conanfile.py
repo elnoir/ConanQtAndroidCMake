@@ -5,7 +5,7 @@ class QtandroidcmakeConan(ConanFile):
     name = "QtAndroidCMake"
     version = "0.1"
     license = "Android NDK"
-    author = "Bittner Ede ede.bittner@nng.com"
+    author = "Bittner Ede Ede.BITTNER@nng.com"
     url = "<Package recipe repository url here, for issues about the package>"
     description = "Wraps the https://github.com/OlivierLDff/QtAndroidCMake package"
     topics = ("cmake", "qt", "android")
