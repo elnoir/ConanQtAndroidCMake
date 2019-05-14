@@ -1,4 +1,5 @@
 from conans import ConanFile, CMake, tools
+from conans.errors import ConanInvalidConfiguration
 from os import path
 
 class QtandroidcmakeConan(ConanFile):
@@ -9,8 +10,12 @@ class QtandroidcmakeConan(ConanFile):
     url = "<Package recipe repository url here, for issues about the package>"
     description = "Wraps the https://github.com/OlivierLDff/QtAndroidCMake package"
     topics = ("cmake", "qt", "android")
-    settings = "os"
+    settings = {"os"}
     exports_sources = "patch/patch0.patch"
+
+    def configure(self):
+        if self.settings.os != "Android":
+            raise ConanInvalidConfiguration("This package is needed only for Android Qt builds")
 
     def build(self):
         git = tools.Git(folder="QtAndroidCMake")
