@@ -27,9 +27,9 @@ class QtandroidcmakeConan(ConanFile):
         tools.patch(patch_file=src_path, base_path=dst_path)
 
     def package(self):
-        self.copy("*.cmake", dst=path.join("lib", "cmake"))
-        self.copy("*.in", dst=path.join("lib", "cmake"))
+        self.copy("*.cmake", dst=".", keep_path=False)
+        self.copy("*.in", dst=".", keep_path=False)
         pass
 
     def package_info(self):
-        self.env_info.CMAKE_MODULE_PATH.append(path.join(self.package_folder, "lib", "cmake", "QtAndroidCMake", ""))
+        self.env_info.CMAKE_MODULE_PATH.append(self.package_folder)
