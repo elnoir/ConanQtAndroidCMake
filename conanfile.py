@@ -12,6 +12,12 @@ class QtandroidcmakeConan(ConanFile):
     topics = ("cmake", "qt", "android")
     settings = {"os"}
     exports_sources = "patch/patch0.patch"
+    options = {
+        "use_patch": [True, False]
+    }
+    default_options = {
+        "use_patch": False
+    }
 
     def configure(self):
         if self.settings.os != "Android":
@@ -20,11 +26,12 @@ class QtandroidcmakeConan(ConanFile):
     def build(self):
         git = tools.Git(folder="QtAndroidCMake")
         git.clone("https://github.com/OlivierLDff/QtAndroidCMake.git", "master")
-        git.checkout("9ad26790ecb8350dbee1885a0130b83c036e7509")
+        if self.options.use_patch:
+            git.checkout("9ad26790ecb8350dbee1885a0130b83c036e7509")
 
-        src_path = path.join(self.build_folder, "patch", "patch0.patch")
-        dst_path = path.join(self.build_folder, "QtAndroidCMake")
-        tools.patch(patch_file=src_path, base_path=dst_path)
+            src_path = path.join(self.build_folder, "patch", "patch0.patch")
+            dst_path = path.join(self.build_folder, "QtAndroidCMake")
+            tools.patch(patch_file=src_path, base_path=dst_path)
 
     def package(self):
         self.copy("*.cmake", dst=".", keep_path=False)
