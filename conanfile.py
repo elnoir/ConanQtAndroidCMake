@@ -2,12 +2,13 @@ from conans import ConanFile, CMake, tools
 from conans.errors import ConanInvalidConfiguration
 from os import path
 
+
 class QtandroidcmakeConan(ConanFile):
     name = "QtAndroidCMake"
     version = "0.1"
     license = "Android NDK"
-    author = "Bittner Ede Ede.BITTNER@nng.com"
-    url = "<Package recipe repository url here, for issues about the package>"
+    author = "Bittner Ede bittner.ede@gmail.com"
+    url = "https://github.com/elnoir/ConanQtAndroidCMake.git"
     description = "Wraps the https://github.com/OlivierLDff/QtAndroidCMake package"
     topics = ("cmake", "qt", "android")
     settings = {"os"}
@@ -37,6 +38,3 @@ class QtandroidcmakeConan(ConanFile):
         self.copy("*.cmake", dst=".", keep_path=False)
         self.copy("*.in", dst=".", keep_path=False)
         pass
-
-    def package_info(self):
-        self.env_info.CMAKE_MODULE_PATH.append(self.package_folder)
