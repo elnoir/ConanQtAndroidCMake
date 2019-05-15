@@ -5,7 +5,7 @@ from os import path
 
 class QtandroidcmakeConan(ConanFile):
     name = "QtAndroidCMake"
-    version = "1.0.0"
+    version = "1.0.1"
     license = "Android NDK"
     author = "Bittner Ede bittner.ede@gmail.com"
     url = "https://github.com/elnoir/ConanQtAndroidCMake.git"
@@ -35,6 +35,4 @@ class QtandroidcmakeConan(ConanFile):
             tools.patch(patch_file=src_path, base_path=dst_path)
 
     def package(self):
-        self.copy("*.cmake", dst=".", keep_path=False)
-        self.copy("*.in", dst=".", keep_path=False)
-        pass
+        self.copy("*", dst=".", excludes="*.patch", keep_path=False)
