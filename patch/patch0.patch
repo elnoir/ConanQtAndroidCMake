@@ -1,0 +1,15 @@
+diff --git a/AndroidManifest.xml.in b/AndroidManifest.xml.in
+index fe3cfc8..e0f47ba 100644
+--- a/AndroidManifest.xml.in
++++ b/AndroidManifest.xml.in
+@@ -6,9 +6,7 @@
+ 	android:versionCode="@QT_ANDROID_APP_VERSION_CODE@">
+     <application 
+     	android:label="@QT_ANDROID_APP_NAME@" 
+-    	android:name="org.qtproject.qt5.android.bindings.QtApplication"
+-    	android:icon="@mipmap/ic_launcher"
+-        android:roundIcon="@mipmap/ic_launcher">
++    	android:name="org.qtproject.qt5.android.bindings.QtApplication">
+ 		<activity 
+ 			android:label="@QT_ANDROID_APP_NAME@" 
+ 			android:name="org.qtproject.qt5.android.bindings.QtActivity" 
