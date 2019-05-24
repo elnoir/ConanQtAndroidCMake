@@ -5,7 +5,7 @@ from os import path
 
 class QtandroidcmakeConan(ConanFile):
     name = "QtAndroidCMake"
-    version = "1.0.1"
+    version = "1.0.2"
     license = "Android NDK"
     author = "Bittner Ede bittner.ede@gmail.com"
     url = "https://github.com/elnoir/ConanQtAndroidCMake.git"
@@ -14,10 +14,12 @@ class QtandroidcmakeConan(ConanFile):
     settings = {"os"}
     exports_sources = "patch/patch0.patch"
     options = {
-        "use_patch": [True, False]
+        "use_patch": [True, False],
+        "use_version_tag": ["v1.1.0", "v1.1.1", "v19.0.0"]
     }
     default_options = {
-        "use_patch": False
+        "use_patch": False,
+        "use_version_tag": "v19.0.0"
     }
 
     def configure(self):
@@ -33,6 +35,8 @@ class QtandroidcmakeConan(ConanFile):
             src_path = path.join(self.build_folder, "patch", "patch0.patch")
             dst_path = path.join(self.build_folder, "QtAndroidCMake")
             tools.patch(patch_file=src_path, base_path=dst_path)
+        else:
+            git.checkout(self.options.use_version_tag)
 
     def package(self):
         self.copy("*", dst=".", excludes="*.patch", keep_path=False)
