@@ -5,7 +5,7 @@ from os import path
 
 class QtandroidcmakeConan(ConanFile):
     name = "QtAndroidCMake"
-    version = "1.0.2"
+    version = "1.0.3"
     license = "Android NDK"
     author = "Bittner Ede bittner.ede@gmail.com"
     url = "https://github.com/elnoir/ConanQtAndroidCMake.git"
