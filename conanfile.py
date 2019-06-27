@@ -23,6 +23,11 @@ class QtandroidcmakeConan(ConanFile):
         "use_version_tag": "v19.0.0"
     }
 
+    def package_info(self):
+        android_sdk_root = self.deps_env_info['android-sdk'].ANDROID_SDK_ROOT
+        self.env_info.ANDROID_SDK = android_sdk_root
+        self.env_info.ANDROID_HOME = android_sdk_root
+
     def configure(self):
         if self.settings.os != "Android":
             raise ConanInvalidConfiguration("This package is needed only for Android Qt builds")
