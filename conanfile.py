@@ -13,6 +13,7 @@ class QtandroidcmakeConan(ConanFile):
     topics = ("cmake", "qt", "android")
     settings = {"os"}
     exports_sources = "patch/patch0.patch"
+    requires = 'android-sdk/26.1.1@tereius/stable'
     options = {
         "use_patch": [True, False],
         "use_version_tag": ["v1.1.0", "v1.1.1", "v19.0.0"]
